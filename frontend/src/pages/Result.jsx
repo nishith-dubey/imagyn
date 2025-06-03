@@ -10,7 +10,6 @@ function Result() {
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
   const { backendUrl, token, setCredits, credits, fetchCredits } = useContext(AppContext);
-  fetchCredits()
   const navigate = useNavigate()
   // let timerId
   const handleChange = (e) => {
@@ -38,7 +37,8 @@ function Result() {
         setIsLoading(false);
         setImage(data.image);
         setIsImageLoaded(true);
-        setCredits(data.credits);
+        fetchCredits()
+        setCredits(credits);
       }
     } catch (error) {
       setIsLoading(false);
@@ -71,7 +71,10 @@ function Result() {
       {isImageLoaded ? (
         <div className="flex mt-14 mx-auto gap-6">
           <button
-            onClick={() => setIsImageLoaded(false)}
+            onClick={() => {
+              setIsImageLoaded(false)
+              fetchCredits()
+            }}
             className="sm:py-4 sm:px-6 py-2 px-4 bg-white border-black border rounded-full transition-all duration-300 ease-in-out"
           >
             Generate Another
@@ -94,6 +97,7 @@ function Result() {
               name="prompt"
               onChange={handleChange}
               value={prompt}
+              disabled={isLoading}
               required
               placeholder="Describe what you want to generate..."
               className="w-full py-4 px-6 pr-20 rounded-xl outline-none text-gray-800 placeholder-gray-400 resize-none min-h-[60px]"

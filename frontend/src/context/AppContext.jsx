@@ -10,10 +10,10 @@ export const AppContextProvider = (props) => { //props object
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [credits, setCredits] = useState(' ');
   
-  const backendUrl = 'https://imagyn.vercel.app'
+  const backendUrl = import.meta.env.BACKEND_URL || 'https://imagyn.onrender.com'
 
   async function fetchCredits () {
-    console.log(typeof(token), '1')
+    console.log(typeof(token), 1)
     try {
       const res = await axios.post(`${backendUrl}/api/user/credits`, null, {headers: {token}});
       const {data} = res;

@@ -96,7 +96,8 @@ function Login() {
             draggable: true,
             progress: undefined,
           });
-          return;
+          
+          setCredits(credits)
         } else {
           toast.error("user is not able to log in!", {
             position: "bottom-right",
