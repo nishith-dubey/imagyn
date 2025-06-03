@@ -9,13 +9,13 @@ function Result() {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
-  const { backendUrl, token, setCredits, credits } = useContext(AppContext);
+  const { backendUrl, token, setCredits, credits, fetchCredits } = useContext(AppContext);
+  fetchCredits()
   const navigate = useNavigate()
   // let timerId
   const handleChange = (e) => {
     setPrompt(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -109,7 +109,7 @@ function Result() {
             <button
               type="submit"
               className={`absolute right-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 ease-in-out ${
-                isLoading && "cursor-not-allowed disabled"
+                isLoading && "cursor-not-allowed"
               }`}
               disabled={isLoading}
             >

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 function Login() {
   const [state, setState] = useState("Login");
-  const { showLoginDialog, setShowLoginDialog, backendUrl, setToken, setUser } =
+  const { showLoginDialog, setShowLoginDialog, backendUrl, setToken, setUser, credits, setCredits } =
     useContext(AppContext);
   // whenever login page is mounted
   useEffect(() => {
@@ -55,7 +55,8 @@ function Login() {
             draggable: true,
             progress: undefined,
           });
-          return;
+          
+          setCredits(credits)
         } else {
           toast.error("user is not able to log in!", {
             position: "bottom-right",

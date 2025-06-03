@@ -10,10 +10,10 @@ export const AppContextProvider = (props) => { //props object
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [credits, setCredits] = useState(' ');
   
-  const backendUrl = import.meta.env.BACKEND_URL || 'http://localhost:3000'
+  const backendUrl = 'https://imagyn.vercel.app'
 
   async function fetchCredits () {
-    console.log(typeof(token))
+    console.log(typeof(token), '1')
     try {
       const res = await axios.post(`${backendUrl}/api/user/credits`, null, {headers: {token}});
       const {data} = res;
@@ -25,7 +25,7 @@ export const AppContextProvider = (props) => { //props object
       toast.error(error.message)
     }
   }
-
+  // fetchCredits()
   useEffect(() => {
     if(token){
       fetchCredits()
@@ -43,6 +43,7 @@ export const AppContextProvider = (props) => { //props object
     credits,
     setCredits,
     backendUrl,
+    fetchCredits
   }
   return (  
     <AppContext.Provider value={value}>

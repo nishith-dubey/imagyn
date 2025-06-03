@@ -13,7 +13,11 @@ await connectDB()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(cors())
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://imagyn.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // If using cookies/auth headers
+}));
 
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)

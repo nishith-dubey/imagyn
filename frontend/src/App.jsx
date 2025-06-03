@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Pricing from "./pages/Pricing";
 import Footer from "./components/Footer";
-import Result from "./pages/result";
+import Result from "./pages/Result";
 import Login from "./components/Login";
 import { AppContext } from "./context/AppContext";
 import { useContext } from "react";
@@ -31,3 +31,10 @@ function App() {
 }
 
 export default App;
+
+// more features
+/*
+image full screen view
+bug: credits not updated after generating 
+paytment
+*/

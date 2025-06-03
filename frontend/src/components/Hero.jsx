@@ -76,7 +76,7 @@ function Hero() {
         <div className=" grid grid-cols-6 gap-4 transition-all duration-500">
           {images.map((image, idx) => {
             return (
-              <div>
+              <div key={idx}>
                 <img
                   src={`${image}`}
                   alt="img"
